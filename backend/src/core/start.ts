@@ -32,7 +32,7 @@ io.on("connection", (socket) => {
   AddPoints(socket);
 });
 
-httpServer.listen(PORT, () => {
+httpServer.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
