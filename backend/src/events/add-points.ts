@@ -5,6 +5,7 @@ import CreateRes from "../helpers/createResponse.js";
 import CheckUserIDExists from "../db/checkUserIdExists.js";
 import AddScore from "../db/addPoints.js";
 import getLeaderBoardDB from "../db/getLeaderBoard.js";
+import addPointHistory from "../db/addPointsHistory.js";
 function createRandomPoints() {
   const min = 1;
   const max = 10;
@@ -48,6 +49,10 @@ export default function AddPoints(socket: Socket) {
 
       const response = CreateRes(true, "Points added successfully");
       socket.emit("add-points-response", response);
+
+      // add points to history
+
+      await addPointHistory(points, userId);
 
       // send leaderboard update
       const leaderboard = await getLeaderBoardDB();
