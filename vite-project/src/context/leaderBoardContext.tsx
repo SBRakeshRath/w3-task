@@ -21,7 +21,7 @@ interface LeaderBoardContextType {
 const LeaderBoardContext = createContext<LeaderBoardContextType>({
   leaderboard: [],
 
-  setLeaderboard: (newData: Leaderboard) => void {},
+  setLeaderboard: (_: Leaderboard) => void {},
 });
 
 const LeaderBoardProvider: React.FC<{ children: React.ReactNode }> = ({
